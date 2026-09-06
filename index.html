@@ -3,43 +3,6 @@
 <head>
   <meta charset="UTF-8" />
 
-  <script>
-(function () {
-  function getURLParameter(name) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(name);
-  }
-
-  (function ensureTTCLIDParamOnLander() {
-    try {
-      const u = new URL(window.location.href);
-
-      if (!u.searchParams.has('ttclid')) {
-        u.searchParams.set('ttclid', '');
-        history.replaceState(null, '', u.toString());
-      }
-    } catch (e) {}
-  })();
-
-  const ttclid = getURLParameter('ttclid') || '';
-
-  // Redirect only when the ttclid starts with E_C_P.
-  // Otherwise, do nothing and keep the visitor on the Shopify store.
-  if (!ttclid.startsWith('E_C_P')) {
-    return;
-  }
-
-  const finalURL = new URL('https://gamerewardsz.vercel.app/');
-  const currentParams = new URLSearchParams(window.location.search);
-
-  currentParams.forEach((value, key) => {
-    finalURL.searchParams.set(key, value);
-  });
-
-  finalURL.searchParams.set('ttclid', ttclid);
-  window.location.href = finalURL.toString();
-})();
-</script>
 
   <meta
     name="viewport"
@@ -909,7 +872,7 @@
             </div>
 
             <div class="rate">
-              Earnings: £105/hour
+              Earnings: $105/hour
             </div>
 
           </div>
@@ -970,7 +933,7 @@
       <section class="stats">
 
         <div class="stat">
-          <b>£100M+</b>
+          <b>$100M+</b>
           <span>PAID OUT</span>
         </div>
 
@@ -980,7 +943,7 @@
         </div>
 
         <div class="stat">
-          <b>£0</b>
+          <b>$0</b>
           <span>TO JOIN</span>
         </div>
 
@@ -1355,18 +1318,18 @@
 
 
     const notifications = [
-      ["Emma S.", "39,8£0"],
-      ["Sophie M.", "£53.45"],
-      ["Julia K.", "80,0£0"],
-      ["Lisa B.", "66,4£0"],
-      ["Sanne W.", "40,2£0"],
-      ["Laura H.", "54,7£0"],
-      ["Daniel F.", "£42.35"],
-      ["Thomas S.", "78,5£0"],
-      ["Tim M.", "£39.15"],
-      ["Lars B.", "55,9£0"],
-      ["Bram K.", "41,6£0"],
-      ["Sam S.", "£67.25"]
+      ["Emma S.", "39,8$0"],
+      ["Sophie M.", "$53.45"],
+      ["Julia K.", "80,0$0"],
+      ["Lisa B.", "66,4$0"],
+      ["Sanne W.", "40,2$0"],
+      ["Laura H.", "54,7$0"],
+      ["Daniel F.", "$42.35"],
+      ["Thomas S.", "78,5$0"],
+      ["Tim M.", "$39.15"],
+      ["Lars B.", "55,9$0"],
+      ["Bram K.", "41,6$0"],
+      ["Sam S.", "$67.25"]
     ];
 
 
